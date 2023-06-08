@@ -3,10 +3,12 @@ const app = express();
 const routes = require('./routes');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(routes);
 
-app.use(express.urlendcoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+const PORT = 3000;
 
 
 db.onc('open', () => {
